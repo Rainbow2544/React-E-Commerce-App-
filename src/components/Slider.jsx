@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {ArrowLeftOutlined,ArrowRightOutlined} from "@material-ui/icons";
- import styled from "styled-components";;
+import styled from "styled-components";
+import {sliderItems} from "../data" 
 
 
 const Container = styled.div`
@@ -31,21 +32,20 @@ const Arrow = styled.div`
   z-index: 2;
 `;
 
-const Slide = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: #${(props) => props.bg};
-`;
-
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transition: all 1.5s ease;
+  transition: all 1s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
+const Slide = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #${(props) => props.bg};
+`;
 const ImgContainer = styled.div`
     flex: 1;
     height: 100%;
@@ -79,44 +79,39 @@ const Button = styled.button`
 `;
 
 const Slider = () => {
-    function handleClick(){
-
+    const [slideIndex, setSlideIndex] = useState(0);
+    function handleClick(direction){
+        if (direction === "left") {
+            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+          } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+          }
     }
   return (
     <Container>
-        <Arrow direction="left" onClick={handleClick}>
+        <Arrow direction="left" onClick={()=> handleClick("left")}>
             <ArrowLeftOutlined />
         </Arrow>
-        <Wrapper slideIndex="">
-            <Slide bg="f5fafd">
-                <ImgContainer>
-                    <Image src="https://d3fw5vlhllyvee.cloudfront.net/dist/header/ukraine_support.7ad2b5d444bc427dbc5d.png"/>
-                </ImgContainer>
-                <InfoContainer>
-                    <Title>THIS IS TTLE</Title>
-                    <Desc>THIS IS DESC</Desc>
-                    <Button>SHOW NOW</Button>
-                </InfoContainer>
-            </Slide>
-
-            <Slide>
-                <ImgContainer>
-                    <Image src="https://d3fw5vlhllyvee.cloudfront.net/dist/header/ukraine_support.7ad2b5d444bc427dbc5d.png"/>
-                </ImgContainer>
-                <InfoContainer>
-                    <Title>THIS IS TTLE</Title>
-                    <Desc>THIS IS DESC</Desc>
-                    <Button>SHOW NOW</Button>
-                </InfoContainer>
-            </Slide>
-            
+        <Wrapper slideIndex={slideIndex}>
+            {sliderItems.map((item) =>(
+                <Slide bg={item.bg} key={item.id}>
+                    <ImgContainer>
+                        <Image src={item.img} />
+                    </ImgContainer>
+                    <InfoContainer>
+                        <Title>{item.title}</Title>
+                        <Desc>{item.desc}</Desc>
+                        <Button>SHOW NOW</Button>
+                    </InfoContainer>
+                </Slide>
+            ))}
         </Wrapper>
-        <Arrow direction="right">
+        <Arrow direction="right" onClick={()=> handleClick("right")}>
             <ArrowRightOutlined />
         </Arrow>
         
     </Container>
-  )
+  );
 }
 
 export default Slider;
