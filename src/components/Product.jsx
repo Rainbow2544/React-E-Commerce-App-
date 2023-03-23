@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import {ShoppingCartOutlined, SearchOutlined,FavoriteBorderOutlined  } from "@material-ui/icons";
 
 const Container = styled.div`
-    height: 70vh;
-    width: 100%;
+    position: relative;
+    height: 350px;
+    min-width: 280px;
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
 `
-const Circle = styled.div`
-    
-`
+
 
 const Image = styled.img`
     height: 75%;
@@ -17,7 +20,22 @@ const Image = styled.img`
 `
 
 const Info = styled.div`
-   display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    z-index: 3;
+    &:hover{
+        opacity: 1;
+    }
 `
 
 const Icon = styled.div`
@@ -39,7 +57,7 @@ const Icon = styled.div`
 function Product({item}) {
   return (
     <Container>
-        <Circle />
+        
         <Image src={item.img}/>
         <Info>
             <Icon>
