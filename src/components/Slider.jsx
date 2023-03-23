@@ -75,7 +75,9 @@ const Button = styled.button`
   padding: 10px;
   font-size: 20px;
   background-color: transparent;
-  cursor: pointer;
+  cursor: pointer; &:hover {
+    color: gray;
+}
 `;
 
 const Slider = () => {
