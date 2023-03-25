@@ -27,7 +27,7 @@ const Navbar = () => {
             </div>
         </div>
         <div className='center'>
-            <h1 id='logo'>LAMA.</h1>
+            <h1 id='logo'>SARA.</h1>
         </div>
         <div className='right'>
             <div className='menuItem'>
