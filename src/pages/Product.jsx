@@ -1,4 +1,4 @@
-import { Announcement } from '@material-ui/icons';
+import Announcement from '../components/Announcement';
 import Footer from "../components/Footer";
 import React from 'react';
 import styled from 'styled-components';
@@ -119,8 +119,9 @@ const Button = styled.button`
 function Product() {
   return (
     <Container>
-        <Navbar />
         <Announcement />
+        <Navbar />
+        
         <Wrapper>
             <ImgContainer>
                 <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />

@@ -1,10 +1,11 @@
 
 
 import Product from './pages/Product';
+import Register from './pages/Register';
 
 function App() {
   return (
-    <Product />
+    <Register />
   );
 }
 
