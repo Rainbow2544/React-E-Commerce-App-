@@ -4,12 +4,13 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Add, Remove } from "@material-ui/icons";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
-  
+  ${mobile({padding: "10px"})}
 `;
 
 const Title = styled.h1`
@@ -24,7 +25,8 @@ const Top = styled.div`
     padding: 20px;
 `;
 
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+${mobile({ display:"none"})}`;
 
 const TopText = styled.span`
     cursor: pointer;
@@ -49,6 +51,7 @@ const Bottom = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    ${mobile({ flexDirection:"column"})}
 `;
 
 const Info = styled.div`
@@ -58,7 +61,7 @@ const Info = styled.div`
 const Product  = styled.div`
     display: flex;
     justify-content: space-between;
-    
+    ${mobile({ flexDirection:"column"})}
 `;
 
 const ProductDetail  = styled.div`
@@ -105,12 +108,13 @@ const ProductAmountContainer  = styled.div`
 
 const ProductAmount  = styled.div`
     margin: 0px 20px;
-    
+    ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.div`
     margin-top: 20px;
     font-size: 19px;
+    ${mobile({ marginBottom: "20px" })}
 `;
 
 const Hr = styled.hr`
